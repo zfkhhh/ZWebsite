@@ -1,0 +1,3 @@
+service:
+  name: zwebsite
+  port: 8081
