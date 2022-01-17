@@ -8,8 +8,21 @@ const (
 	RequestKey = "request_uuid"
 )
 
+// db settings
 const (
 	DBMaxIdleConn     = 10
 	DBMaxOpenConn     = 1024
 	DBConnMaxLifeTime = 60 * time.Second
+)
+
+// log settings
+const (
+	// Log save dir
+	LogDir = "/tmp/ZWebsite/log"
+	// 日志保留最大时长环境变量
+	LogRotateDaysEnvKey = "LOG_ROTATA_DAYS"
+	// 日志保留最大时长默认值
+	DefaultLogRotateDays = 30
+	// 日志保留最大时长最小天数
+	MinLogRotateDays = 7
 )

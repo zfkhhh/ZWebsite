@@ -1,4 +1,4 @@
-package db
+package dao
 
 import (
 	"ZWebsite/pkg/constant"
@@ -17,7 +17,7 @@ import (
 var (
 	DB          *gorm.DB
 	dbInfo      = &domain.DBInfo{}
-	allModels   = []interface{}{}
+	allModels   = []interface{}{&RequestLog{}}
 )
 
 func Init() {

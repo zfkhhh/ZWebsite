@@ -7,3 +7,10 @@ import (
 func NewUUID() string {
 	return uuid.NewV4().String()
 }
+
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
