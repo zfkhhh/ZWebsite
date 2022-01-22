@@ -32,18 +32,18 @@ type Factory struct {
 
 var factory *Factory
 
-func SetUp(){
-	InitLogger(setting.Setting.LogLevel,setting.Setting.ServiceName)
+func SetUp() {
+	InitLogger(setting.Setting.LogLevel, setting.Setting.ServiceName)
 }
 
-func InitLogger(logLevel ,serviceName string)  {
+func InitLogger(logLevel, serviceName string) {
 	fileName := constant.LogDir + "/" + serviceName + ".%Y%m%d%H" + ".log"
-	maxAgeHours := time.Hour * time.Duration(getLogRotateDays() * 24)
+	maxAgeHours := time.Hour * time.Duration(getLogRotateDays()*24)
 	// 日志切割 rotateLogs 写入流
 	timeRotateWriter, _ := rotateLogs.New(
 		fileName,
 		rotateLogs.WithMaxAge(maxAgeHours),
-		rotateLogs.WithRotationTime(24*time.Hour), )
+		rotateLogs.WithRotationTime(24*time.Hour))
 
 	sync := zapcore.AddSync(timeRotateWriter)
 
@@ -54,7 +54,7 @@ func InitLogger(logLevel ,serviceName string)  {
 
 	factory = &Factory{
 		// 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数
-		logger: zap.New(core,zap.AddCaller(),zap.AddCallerSkip(1)),
+		logger: zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1)),
 	}
 }
 
@@ -68,7 +68,7 @@ func getLogRotateDays() int {
 	if err != nil {
 		return constant.DefaultLogRotateDays
 	}
-	return utils.Max(days,constant.MinLogRotateDays)
+	return utils.Max(days, constant.MinLogRotateDays)
 }
 func getEncoderConfig() zapcore.EncoderConfig {
 	// 如果不指定对应key的name的话，对应key的信息不处理，即不会写入到文件中
@@ -109,7 +109,6 @@ func setLoggerName(l *Factory, level string) *zap.Logger {
 	}
 	return l.logger.Named(name)
 }
-
 
 func For(ctx context.Context) *Factory {
 	return &Factory{

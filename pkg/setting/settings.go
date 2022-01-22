@@ -11,7 +11,7 @@ import (
 
 type Settings struct {
 	ServiceName string
-	ServicePort  string
+	ServicePort string
 
 	LogLevel string
 

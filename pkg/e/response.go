@@ -7,9 +7,9 @@ type Gin struct {
 }
 
 type Response struct {
-	Success     bool         `json:"success"`
-	AppMessage  *AppError    `json:"appMessage"`
-	Data        interface{}  `json:"data"`
+	Success    bool        `json:"success"`
+	AppMessage *AppError   `json:"appMessage"`
+	Data       interface{} `json:"data"`
 }
 
 // Response setting gin.JSON

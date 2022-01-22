@@ -6,6 +6,11 @@ const (
 	AppConfigPath = "./conf/app.yaml"
 	// RequestKey  request key name
 	RequestKey = "request_uuid"
+
+	AccountNameMinLength    = 1
+	AccountNameMaxLength    = 20
+	AccountPasswordMinLenth = 8
+	AccountPasswordMaxLenth = 20
 )
 
 // db settings

@@ -15,13 +15,12 @@ import (
 )
 
 var (
-	DB          *gorm.DB
-	dbInfo      = &domain.DBInfo{}
-	allModels   = []interface{}{&RequestLog{}}
+	DB        *gorm.DB
+	dbInfo    = &domain.DBInfo{}
+	allModels = []interface{}{&RequestLog{}}
 )
 
 func Init() {
-
 
 	if dbInfo.User = setting.Setting.DBUser; dbInfo.User == "" {
 		klog.Fatalf("get db user failed")
