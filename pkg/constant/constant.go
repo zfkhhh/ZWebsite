@@ -18,6 +18,8 @@ const (
 	DBMaxIdleConn     = 10
 	DBMaxOpenConn     = 1024
 	DBConnMaxLifeTime = 60 * time.Second
+
+	RedisDBIndex      = "0"
 )
 
 // log settings

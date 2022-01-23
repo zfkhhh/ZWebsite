@@ -24,6 +24,7 @@ type Settings struct {
 	RedisHost  	  string
 	RedisPort     string
 	RedisPassword string
+	RedisDBIndex  string
 }
 
 var Setting = &Settings{}
@@ -66,13 +67,17 @@ func init() {
 	if Setting.DBPassword = os.Getenv("DBPW"); Setting.DBPassword == "" {
 		log.Fatalf("failed to get DBPW")
 	}
-	if Setting.RedisHost = os.Getenv("REDISHOST"); Setting.DBPassword == "" {
+	if Setting.RedisHost = os.Getenv("REDISHOST"); Setting.RedisHost == "" {
 		log.Fatalf("failed to get RedisHost")
 	}
-	if Setting.RedisPort = os.Getenv("REDISPORT"); Setting.DBPassword == "" {
+	if Setting.RedisPort = os.Getenv("REDISPORT"); Setting.RedisPort == "" {
 		log.Fatalf("failed to get RedisPort")
 	}
-	if Setting.RedisPassword = os.Getenv("REDISPW"); Setting.DBPassword == "" {
-		log.Fatalf("failed to get RedisPassword")
+	// Redis password allow ""
+	Setting.RedisPassword = os.Getenv("REDISPW")
+	if Setting.RedisDBIndex = os.Getenv("REDISDBINDEX"); Setting.RedisDBIndex == "" {
+		// default index = 0
+		Setting.RedisDBIndex = constant.RedisDBIndex
+		log.Printf("Redis default DBIndex")
 	}
 }
