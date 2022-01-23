@@ -20,7 +20,7 @@ var (
 	allModels = []interface{}{&RequestLog{}}
 )
 
-func Init() {
+func InitMysql() {
 
 	if dbInfo.User = setting.Setting.DBUser; dbInfo.User == "" {
 		klog.Fatalf("get db user failed")

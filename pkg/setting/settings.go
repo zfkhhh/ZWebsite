@@ -20,6 +20,10 @@ type Settings struct {
 	DBUser     string
 	DBPassword string
 	DBName     string
+
+	RedisHost  	  string
+	RedisPort     string
+	RedisPassword string
 }
 
 var Setting = &Settings{}
@@ -61,5 +65,14 @@ func init() {
 	}
 	if Setting.DBPassword = os.Getenv("DBPW"); Setting.DBPassword == "" {
 		log.Fatalf("failed to get DBPW")
+	}
+	if Setting.RedisHost = os.Getenv("REDISHOST"); Setting.DBPassword == "" {
+		log.Fatalf("failed to get RedisHost")
+	}
+	if Setting.RedisPort = os.Getenv("REDISPORT"); Setting.DBPassword == "" {
+		log.Fatalf("failed to get RedisPort")
+	}
+	if Setting.RedisPassword = os.Getenv("REDISPW"); Setting.DBPassword == "" {
+		log.Fatalf("failed to get RedisPassword")
 	}
 }
