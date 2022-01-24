@@ -67,6 +67,9 @@ func init() {
 	if Setting.DBPassword = os.Getenv("DBPW"); Setting.DBPassword == "" {
 		log.Fatalf("failed to get DBPW")
 	}
+	if Setting.DBName = os.Getenv("DBNAME"); Setting.DBName == "" {
+		log.Fatalf("failed to get DBNAME")
+	}
 	if Setting.RedisHost = os.Getenv("REDISHOST"); Setting.RedisHost == "" {
 		log.Fatalf("failed to get RedisHost")
 	}
