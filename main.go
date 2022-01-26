@@ -11,10 +11,8 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 
-
 	"github.com/gin-contrib/cors"
 )
-
 
 func main() {
 	ctx := context.TODO()
@@ -24,7 +22,6 @@ func main() {
 	dao.InitRedis()
 
 	logger.For(ctx).Info("Starting server ......")
-
 
 	r := routers.InitRouter()
 

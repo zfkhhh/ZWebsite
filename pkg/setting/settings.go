@@ -21,7 +21,7 @@ type Settings struct {
 	DBPassword string
 	DBName     string
 
-	RedisHost  	  string
+	RedisHost     string
 	RedisPort     string
 	RedisPassword string
 	RedisDBIndex  string

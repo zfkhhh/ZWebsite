@@ -72,7 +72,7 @@ func CreateAccount(account *dao.Account) (err error) {
 	return nil
 }
 
-func ResetPassword(accountName,oldAccountPassword,newAccountPassword string) (err error){
+func ResetPassword(accountName, oldAccountPassword, newAccountPassword string) (err error) {
 	// check accountName : 小于20字符,只能包含小写字符、数组、-、_
 	if _, err := utils.IsValidAccountName(accountName); err != nil {
 		return err

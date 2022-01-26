@@ -11,7 +11,7 @@ import (
 var RedisClient *redis.Client
 
 func InitRedis() {
-	redisDBIndx ,_ := strconv.Atoi(setting.Setting.RedisDBIndex)
+	redisDBIndx, _ := strconv.Atoi(setting.Setting.RedisDBIndex)
 	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%s:%s", setting.Setting.RedisHost, setting.Setting.RedisPort),
 		Password: setting.Setting.RedisPassword,
@@ -20,9 +20,8 @@ func InitRedis() {
 
 	_, err := RedisClient.Ping().Result()
 	if err != nil {
-		klog.Fatalf("ping redis failed , err = [%v]",err)
+		klog.Fatalf("ping redis failed , err = [%v]", err)
 	}
 
 	klog.Info("Init Redis Success")
 }
-
