@@ -25,7 +25,7 @@ type DBInfo struct {
 var (
 	DB        *gorm.DB
 	dbInfo    = &DBInfo{}
-	allModels = []interface{}{&RequestLog{}}
+	allModels = []interface{}{&RequestLog{},&Account{}}
 )
 
 func InitMysql() {
