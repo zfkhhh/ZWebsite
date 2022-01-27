@@ -18,8 +18,11 @@ func InitRouter() *gin.Engine {
 
 	r.GET("/", healthHandler)
 
-	groupV1 := r.Group("/v1")
-	v1.InitAccount(groupV1)
+	groupAdmin := r.Group("/v1/admin")
+	v1.InitAdmin(groupAdmin)
+
+	groupWeb := r.Group("/v1/website")
+	v1.InitWebSite(groupWeb)
 
 	return r
 }

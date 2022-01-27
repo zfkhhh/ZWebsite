@@ -5,7 +5,7 @@ import (
 )
 
 func InitAccount(group *gin.RouterGroup) {
-	group.POST("/admin/login", Login)
+	group.POST("/login", Login)
 }
 
 func Login(c *gin.Context) {
