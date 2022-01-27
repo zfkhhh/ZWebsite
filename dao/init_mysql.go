@@ -2,7 +2,6 @@ package dao
 
 import (
 	"ZWebsite/pkg/constant"
-	"ZWebsite/pkg/domain"
 	"ZWebsite/pkg/setting"
 	"fmt"
 
@@ -14,9 +13,18 @@ import (
 	"k8s.io/klog/v2"
 )
 
+type DBInfo struct {
+	User     string
+	Password string
+	Host     string
+	Port     string
+	Name     string
+	Path     string
+}
+
 var (
 	DB        *gorm.DB
-	dbInfo    = &domain.DBInfo{}
+	dbInfo    = &DBInfo{}
 	allModels = []interface{}{&RequestLog{}}
 )
 

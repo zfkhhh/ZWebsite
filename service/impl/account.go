@@ -1,27 +1,32 @@
-package admin
+package impl
 
 import (
 	"ZWebsite/dao"
+	"ZWebsite/pkg/logger"
 	"ZWebsite/pkg/utils"
 	"errors"
 	"strings"
 )
 
-func Login(accountName, accountPassword string) (result bool, err error) {
+
+
+func (s *Service) Login(accountName, accountPassword string) (uid string,result bool, err error) {
+	logger.For(s.ctx).Infof("check accountName and accountPassword ... ")
 	// check accountName : 小于20字符,只能包含小写字符、数组、-、_
 	if result, err = utils.IsValidAccountName(accountName); err != nil {
-		return result, err
+		return "",result, err
 	}
 
 	// check accountPassword
 	if result, err = utils.IsValidAccountPassword(accountPassword); err != nil {
-		return result, err
+		return "",result, err
 	}
 
 	account, err := dao.GetAccount(accountName, accountPassword)
 	if err != nil {
 		result = false
-		return
+		logger.For(s.ctx).Errorf("dao GetAccount err: [%v]",err)
+		return "",result, err
 	}
 
 	// compare accountName , accountPassword
@@ -29,11 +34,14 @@ func Login(accountName, accountPassword string) (result bool, err error) {
 		strings.Compare(accountName, account.AccountName) == 0 &&
 		strings.Compare(accountPassword, accountPassword) == 0 {
 		result = true
-		return
+		logger.For(s.ctx).Infof("user [%v] login success ",accountName)
+		return account.Uid,result,nil
 	} else {
 		result = false
-		return result, errors.New(" account name or password wrong")
+		logger.For(s.ctx).Errorf("account name or password wrong")
+		return "",result, errors.New("account name or password wrong")
 	}
+
 }
 
 func GetAccount(accountName, accountPassword string) (*dao.Account, error) {

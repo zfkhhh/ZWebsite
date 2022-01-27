@@ -14,7 +14,6 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(mode)
 	r := gin.New()
 	r.Use(gin.Recovery())
-	r.Use()
 
 	r.GET("/", healthHandler)
 

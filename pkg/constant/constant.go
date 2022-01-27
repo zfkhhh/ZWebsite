@@ -19,7 +19,12 @@ const (
 	DBMaxOpenConn     = 1024
 	DBConnMaxLifeTime = 60 * time.Second
 
-	RedisDBIndex = "0"
+	RedisDBIndex       = "0"
+	RedisConNum        = "10"
+	RedisSessionSecret = "secret"
+	RedisNetwork       = "tcp"
+
+	LoginSessionKey = "loginUser"
 )
 
 // log settings

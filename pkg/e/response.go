@@ -2,7 +2,6 @@ package e
 
 import (
 	"github.com/gin-gonic/gin"
-	"sync"
 )
 
 type Gin struct {
@@ -13,19 +12,6 @@ type Response struct {
 	Success    bool        `json:"success"`
 	AppMessage *AppError   `json:"appMessage"`
 	Data       interface{} `json:"data"`
-}
-
-func (g *Gin) Session() *Session {
-	var session Session
-	cookie, ok := g.C.Get("_session")
-	if !ok {
-		return nil
-	}
-
-	session = cookie.(Session)
-
-	session.Lock = &sync.Mutex{}
-	return &session
 }
 
 // Response setting gin.JSON

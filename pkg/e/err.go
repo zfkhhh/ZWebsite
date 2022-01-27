@@ -11,12 +11,18 @@ var (
 	SUCCESS        = 200
 	INVALID_PARAMS = 400
 	ERROR          = 500
+
+	// account
+	ERROR_ACCOUNT_LOGIN    =  50101
+
 )
 
 var MsgFlags = map[int]string{
 	SUCCESS:        "请求成功",
 	ERROR:          "系统错误",
 	INVALID_PARAMS: "请求参数错误",
+
+	ERROR_ACCOUNT_LOGIN:   "用户登录失败",
 }
 
 // GetMsg get error information based on Code

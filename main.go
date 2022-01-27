@@ -2,6 +2,7 @@ package main
 
 import (
 	"ZWebsite/dao"
+	"ZWebsite/pkg/e"
 	"ZWebsite/pkg/logger"
 	"ZWebsite/pkg/setting"
 	"ZWebsite/routers"
@@ -20,12 +21,14 @@ func main() {
 	logger.SetUp()
 	dao.InitMysql()
 	dao.InitRedis()
+	session := e.SetUpSession()
 
 	logger.For(ctx).Info("Starting server ......")
 
 	r := routers.InitRouter()
 
 	r.Use(cors.Default())
+	r.Use(*session)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	_ = r.Run(fmt.Sprintf(":%s", setting.Setting.ServicePort))

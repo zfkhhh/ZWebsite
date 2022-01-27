@@ -10,6 +10,6 @@ func InitAdmin(group *gin.RouterGroup) {
 	admin.InitAccount(group)
 }
 
-func InitWebSite(group *gin.RouterGroup){
+func InitWebSite(group *gin.RouterGroup) {
 	website.InitBlog(group)
 }
