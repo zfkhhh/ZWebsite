@@ -2,6 +2,7 @@ package utils
 
 import (
 	"ZWebsite/pkg/constant"
+	"encoding/base64"
 	"github.com/pkg/errors"
 	"regexp"
 	"unicode"
@@ -22,7 +23,13 @@ func IsValidAccountName(name string) (bool, error) {
 	return true, nil
 }
 
-func IsValidAccountPassword(password string) (bool, error) {
+func IsValidAccountPassword(decPassword string) (bool, error) {
+	// base64 解密
+	passwordByte, err := base64.StdEncoding.DecodeString(decPassword)
+	password := string(passwordByte)
+	if err != nil {
+		return false, err
+	}
 	// 密码长度在8到20之间且需包含至少一个大写字符，一个小写字符和一个数字
 	if len(password) < constant.AccountPasswordMinLenth || len(password) > constant.AccountPasswordMaxLenth {
 		return false, errors.New("密码长度在8到20之间!")
