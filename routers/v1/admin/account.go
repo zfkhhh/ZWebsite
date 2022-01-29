@@ -24,6 +24,7 @@ func Login(c *gin.Context) {
 		appG.Response(http.StatusBadRequest,e.INVALID_PARAMS,false,map[string]string{
 			"err_msg": err.Error(),
 		})
+		return
 	}
 
 	service := impl.NewService(ctx)
@@ -33,9 +34,11 @@ func Login(c *gin.Context) {
 		appG.Response(http.StatusBadRequest,e.ERROR_ACCOUNT_LOGIN,false,map[string]string{
 			"err_msg": err.Error(),
 		})
+		return
 	}
 
 	appG.Response(http.StatusOK,e.SUCCESS,true,map[string]string{
 		"uid": uid,
 	})
+	return
 }
