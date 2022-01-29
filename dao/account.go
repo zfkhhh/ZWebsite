@@ -21,7 +21,7 @@ func GetAccount(accountName, accountPassword string) (account *Account, err erro
 		"account_name":     accountName,
 		"account_password": accountPassword,
 	}
-	err = DB.Where(maps).Take(account).Error
+	err = DB.Where(maps).Take(&account).Error
 	if err != nil {
 		return
 	}
